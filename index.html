@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rahul Yadav — Portfolio</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Certified AWS & DevOps Engineer. End-to-end DevOps, Cloud, CI/CD, Kubernetes, Security & Cost Optimization." />
+    <meta property="og:title" content="Rahul Yadav — DevOps & Cloud Engineer" />
+    <meta property="og:description" content="End-to-end DevOps & IT Solutions: AWS, Kubernetes, CI/CD, Security, Monitoring." />
+    <meta property="og:type" content="website" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
+    <!-- Base Styles (Light theme) -->
+    <style>
+        :root{
+          --grad: linear-gradient(90deg,#4f46e5,#06b6d4);
+          --bg:#f8fafc; /* page background */
+          --card:#ffffff; /* card bg */
+          --muted:#475569; /* secondary text */
+          --text:#0f172a; /* primary text */
+          --soft:#ffffff;
+          --radius:1.25rem;
+          --border: rgba(15,23,42,.06);
+        }
+        *{box-sizing:border-box}
+        body{
+          font-family:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
+          background:var(--bg);
+          color:var(--text);
+          overflow-x:hidden;
+        }
+        a{text-decoration:none}
+        .text-gradient{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .btn-gradient{background:var(--grad);border:none;color:#fff}
+        .btn-gradient:hover{filter:brightness(1.03);transform:translateY(-1px)}
+        .btn-outline-light{border-color:var(--border);color:var(--text);background:transparent}
+        .container-edge{max-width:1650px}
+        .section{padding:72px 0}
+        .cardx{
+          background:var(--card);
+          border:1px solid var(--border);
+          border-radius:var(--radius);
+          box-shadow:0 6px 18px rgba(15,23,42,.06);
+          color:var(--text);
+        }
+        .badge-soft{
+          background:rgba(79,70,229,.08);
+          border:1px solid rgba(79,70,229,.12);
+          color:var(--text);
+        }
+        .icon-pill{width:44px;height:44px;display:grid;place-items:center;border-radius:999px;background:rgba(15,23,42,.04)}
+        .nav-link{color:var(--text)!important;font-weight:600}
+        .nav-link:hover,.nav-link.active{color:#0b1220!important}
+        .navbar{
+          backdrop-filter:saturate(120%) blur(6px);
+          background:rgba(255,255,255,.85)!important;
+          border-bottom:1px solid var(--border);
+        }
+        .hero{
+          position:relative;
+          background:
+            radial-gradient(1200px 600px at 10% -10%, rgba(79,70,229,.06),transparent 60%),
+            radial-gradient(900px 500px at 100% 0%, rgba(6,182,212,.04),transparent 60%);
+        }
+        .hero-cta .btn{padding:.9rem 1.25rem;border-radius:999px}
+        .logo-wall img{opacity:1;filter:none;transition:all .25s;max-height:36px}
+        .logo-wall img:hover{transform:translateY(-4px)}
+        .service:hover{transform:translateY(-6px);transition:transform .25s}
+        .price{border:1px solid var(--border);background:linear-gradient(180deg, rgba(255,255,255,.6), rgba(255,255,255,.7))}
+        .price.highlight{border-color:transparent;background:var(--grad);color:#fff}
+        .check{color:#16a34a}
+        .step{position:relative;padding-left:52px}
+        .step:before{
+          content:attr(data-n);position:absolute;left:0;top:0;width:38px;height:38px;border-radius:999px;
+          display:grid;place-items:center;background:rgba(79,70,229,.12);font-weight:800;color:var(--text)
+        }
+        .faq button{background:rgba(15,23,42,.03);border:1px solid var(--border);color:var(--text)}
+        .floating-cta{position:fixed;right:18px;bottom:18px;z-index:1050;display:flex;gap:.6rem;flex-direction:column}
+        .floating-cta .btn{border-radius:999px;box-shadow:0 10px 25px rgba(15,23,42,.06)}
+        .wa-btn{background:#25D366;border:none;color:#fff}
+        .sticky-topbar{position:sticky;top:0;z-index:1020}
+        .shadow-soft{box-shadow:0 10px 35px rgba(15,23,42,.06)}
+        .tiny{font-size:.875rem;color:var(--muted)}
+        .footer{background:transparent;border-top:1px solid var(--border)}
+        /* contact form */
+        .form-control,.form-select{background:#fff;border:1px solid var(--border);color:var(--text)}
+        .form-control:focus,.form-select:focus{border-color:rgba(79,70,229,.6);box-shadow:0 0 0 .2rem rgba(79,70,229,.08);color:var(--text)}
+        /* chips */
+        .chip{padding:.3rem .7rem;border-radius:999px;border:1px solid var(--border);display:inline-flex;gap:.35rem;align-items:center;background:rgba(255,255,255,.85)}
+        /* project cards */
+        .project .thumb{border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+        .project .thumb img{width:100%;height:220px;object-fit:cover;display:block}
+        /* responsive tweaks */
+        @media (max-width:767px){
+          .display-2{font-size:2.2rem}
+          .hero-cta{gap:.6rem}
+          .logo-wall img{max-height:28px}
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg sticky-topbar">
+    <div class="container-fluid container-edge px-3">
+        <a class="navbar-brand fw-bold text-gradient" href="#home">Rahul Yadav</a>
+        <button class="navbar-toggler text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto gap-lg-2">
+                <li class="nav-item"><a class="nav-link active" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#packages">Packages</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#process">Process</a></li>
+                <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                <li class="nav-item ms-lg-2"><a class="btn btn-gradient btn-sm" href="#contact"><i class="bi bi-lightning-charge-fill me-1"></i> Get a Quote</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header id="home" class="hero section pt-5">
+    <div class="container-fluid container-edge px-3">
+        <div class="row align-items-center gy-4">
+
+            <!-- Left Side Text -->
+            <div class="col-lg-7">
+                <!-- Animated Gradient Badge -->
+                <span class="badge badge-soft rounded-pill mb-3">
+                    CERTIFIED AWS & DEVOPS ENGINEER | 4+ YEARS EXPERIENCE
+                </span>
+
+                <h1 class="display-2 fw-800 mb-3">
+                    End-to-End <span class="text-gradient">DevOps & IT Solutions</span>
+                </h1>
+                <p class="lead text-muted mb-4">
+                    I architect, automate & secure production-grade cloud infra that’s fast to deploy, secure by design, and built to scale.
+                </p>
+
+                <!-- Hero Buttons -->
+                <div class="d-flex flex-wrap hero-cta gap-2 mb-4">
+                    <a href="#contact" class="btn btn-hero btn-consult btn-lg">
+                        <i class="bi bi-calendar2-check me-2"></i>Book Free Consultation
+                    </a>
+                    <a href="#projects" class="btn btn-hero btn-results btn-lg">
+                        <i class="bi bi-rocket-takeoff me-2"></i>See Projects
+                    </a>
+                    <a href="https://www.credly.com/users/rahul-yadav.f7291ff8/edit#credly" target="_blank" class="btn btn-hero btn-awscert btn-lg">
+                        <i class="fa-brands fa-aws me-2"></i>AWS Certified
+                    </a>
+                </div>
+
+                <style>
+                    .service-chip {
+                        background-color: #ffffff;
+                        color: #000000;
+                        border: 1px solid #ddd;
+                        padding: 6px 12px;
+                        border-radius: 20px;
+                        font-size: 14px;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 6px;
+                        transition: all 0.3s ease;
+                    }
+
+                    /* Icons ka default blue */
+                    .service-chip i {
+                        color: #007bff;
+                        transition: all 0.3s ease;
+                    }
+
+                    /* Hover state */
+                    .service-chip:hover {
+                        background-color: #007bff;
+                        color: #ffffff;
+                        text-decoration: none;
+                        border-color: #007bff;
+                    }
+
+                    .service-chip:hover i {
+                        color: #001f5c; /* Dark blue icons */
+                    }
+                </style>
+
+                <div class="d-flex flex-wrap gap-2 mt-4">
+                    <a href="https://docs.aws.amazon.com/" target="_blank" class="chip service-chip text-decoration-none">
+                        <i class="bi bi-cloud-upload"></i> Cloud Infra & Security
+                    </a>
+                    <a href="https://developer.hashicorp.com/terraform/docs" target="_blank" class="chip service-chip text-decoration-none">
+                        <i class="bi bi-hdd-stack"></i> IaC (Terraform)
+                    </a>
+                    <a href="https://docs.ansible.com/" target="_blank" class="chip service-chip text-decoration-none">
+                        <i class="bi bi-gear"></i> Automation (Ansible, Bash)
+                    </a>
+                    <a href="https://kubernetes.io/docs/home/" target="_blank" class="chip service-chip text-decoration-none">
+                        <i class="bi bi-diagram-3"></i> Kubernetes
+                    </a>
+                    <a href="https://docs.github.com/en/actions" target="_blank" class="chip service-chip text-decoration-none">
+                        <i class="fa-solid fa-infinity"></i> CI/CD
+                    </a>
+                    <a href="https://docs.docker.com/" target="_blank" class="chip service-chip text-decoration-none">
+                        <i class="bi bi-server"></i> Docker
+                    </a>
+                    <a href="https://prometheus.io/docs/introduction/overview/" target="_blank" class="chip service-chip text-decoration-none">
+                        <i class="bi bi-bar-chart-line"></i> Monitoring
+                    </a>
+                    <a href="https://www.elastic.co/guide/index.html" target="_blank" class="chip service-chip text-decoration-none">
+                        <i class="bi bi-file-code"></i> Logging (ELK)
+                    </a>
+                    <a href="https://aws.amazon.com/aws-cost-management/cost-optimization/" target="_blank" class="chip service-chip text-decoration-none">
+                        <i class="bi bi-currency-dollar"></i> Cost Optimization
+                    </a>
+                    <a href="https://developer.hashicorp.com/vault/docs" target="_blank" class="chip service-chip text-decoration-none">
+                        <i class="bi bi-shield-lock"></i> Secrets Mgmt
+                    </a>
+                    <a href="https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" target="_blank" class="chip service-chip text-decoration-none">
+                        <i class="bi bi-lightning-charge"></i> Serverless
+                    </a>
+                    <a href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html" target="_blank" class="chip service-chip text-decoration-none">
+                        <i class="bi bi-diagram-2"></i> Cloud Networking
+                    </a>
+                    <a href="https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html" target="_blank" class="chip service-chip text-decoration-none">
+                        <i class="bi bi-box"></i> EKS
+                    </a>
+                    <a href="https://grafana.com/oss/loki/" target="_blank" class="chip service-chip text-decoration-none">
+                        <i class="bi bi-activity"></i> Loki Logs
+                    </a>
+                    <a href="https://aws.amazon.com/cloudfront/" target="_blank" class="chip service-chip text-decoration-none">
+                        <i class="bi bi-globe"></i> CDN (CloudFront)
+                    </a>
+                    <a href="https://aws.amazon.com/waf/" target="_blank" class="chip service-chip text-decoration-none">
+                        <i class="bi bi-shield-shaded"></i> WAF & Firewall
+                    </a>
+                    <a href="https://helm.sh/docs/" target="_blank" class="chip service-chip text-decoration-none">
+                        <i class="bi bi-stack"></i> Helm Charts
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Side Profile Card -->
+            <div class="col-lg-5 d-flex justify-content-center">
+                <div class="cardx p-4 shadow-soft text-center d-flex flex-column align-items-center"
+                     style="width: 100%; max-width: 420px; min-height: 550px;">
+
+                    <!-- Profile Image -->
+                    <img src="assets/profile.png"
+                         alt="Rahul Yadav"
+                         class="rounded-4 mb-3"
+                         style="width: 100%; max-width: 380px; height: auto; object-fit: contain;" />
+
+                    <!-- Info Row -->
+                    <div class="d-flex justify-content-center align-items-center w-100 mt-2 flex-wrap gap-3">
+                        <span class="tiny d-flex align-items-center gap-2">
+                            <i class="bi bi-geo-alt"></i> India
+                        </span>
+                        <span class="tiny d-flex align-items-center gap-2">
+                            <i class="bi bi-laptop"></i> Available Worldwide
+                        </span>
+                        <span class="tiny d-flex align-items-center gap-2">
+                            <i class="bi bi-clock"></i> 40+ hrs/week
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<style>
+    /* Badge Animation */
+    .badge-soft {
+        display: inline-block;
+        background-color: #f0f0f0;
+        color: #333;
+        padding: 0.5rem 1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        cursor: pointer;
+        overflow: hidden;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .badge-soft span {
+        background: linear-gradient(90deg, #1e90ff, #00bfff, #1e90ff);
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+    }
+
+    .badge-soft:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(30,144,255,0.4), 0 0 30px rgba(0,191,255,0.3);
+    }
+
+    .badge-soft:hover span {
+        animation: gradientMove 2s linear infinite;
+    }
+
+    /* Unified Hero Buttons Base */
+    .btn-hero {
+        color: #fff;
+        border: none;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        border-radius: 0.5rem;
+    }
+
+    /* Individual Button Animations */
+    .btn-consult {
+        background: linear-gradient(90deg, #1e90ff, #00bfff, #1e90ff);
+        background-size: 200% 100%;
+    }
+
+    .btn-consult:hover {
+        animation: gradientMove 2s linear infinite;
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(30,144,255,0.4);
+    }
+
+    .btn-results {
+        background: linear-gradient(90deg, #28a745, #85e085, #28a745);
+        background-size: 200% 100%;
+    }
+
+    .btn-results:hover {
+        animation: gradientMove 2.5s linear infinite;
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(40,167,69,0.4);
+    }
+
+    .btn-awscert {
+        background: linear-gradient(90deg, #ff9900, #ffd066, #ff9900);
+        background-size: 200% 100%;
+    }
+
+    .btn-awscert:hover {
+        animation: gradientMove 3s linear infinite;
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(255,153,0,0.4);
+    }
+
+    /* Gradient Move Keyframes */
+    @keyframes gradientMove {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+</style>
+
+
+<!-- SERVICES -->
+<section id="services" class="section">
+    <div class="container-fluid container-edge px-3">
+        <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-4">
+            <h2 class="mb-0">Top-Rated DevOps & Cloud Solutions</h2>
+            <a href="#contact" class="tiny"><i class="bi bi-chat-dots me-1"></i>Not sure what you need? Ask me.</a>
+        </div>
+        <div class="row g-3">
+            <!-- Existing 7 services ... -->
+            <!-- Cloud Infrastructure & Security -->
+            <div class="col-md-6 col-xl-3">
+                <div class="cardx service p-4 h-100">
+                    <div class="icon-pill mb-3"><i class="fa-brands fa-aws"></i></div>
+                    <h5>Cloud Infrastructure & Security</h5>
+                    <p class="text-muted">Design, deploy & secure production-grade cloud environments with best practices, multi-AZ reliability, and automation.</p>
+                    <ul class="small">
+                        <li>VPC, IAM, KMS & Security Hub</li>
+                        <li>Auto-scaling, backups & disaster recovery</li>
+                        <li>CIS benchmarks, guardrails & compliance</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CI/CD & Release Engineering -->
+            <div class="col-md-6 col-xl-3">
+                <div class="cardx service p-4 h-100">
+                    <div class="icon-pill mb-3"><i class="fa-solid fa-infinity"></i></div>
+                    <h5>CI/CD & Release Engineering</h5>
+                    <p class="text-muted">End-to-end pipeline automation for safe, fast, and repeatable releases — from build to deploy, with full observability.</p>
+                    <ul class="small">
+                        <li>GitHub Actions / GitLab CI / Jenkins</li>
+                        <li>Blue/Green, Canary & Rolling Deployments</li>
+                        <li>Artifact management & SBOM tracking</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Kubernetes, Docker & Helm -->
+            <div class="col-md-6 col-xl-3">
+                <div class="cardx service p-4 h-100">
+                    <div class="icon-pill mb-3"><i class="fa-brands fa-docker"></i></div>
+                    <h5>Kubernetes, Docker & Helm</h5>
+                    <p class="text-muted">Production-ready container orchestration, GitOps, observability, and automated scaling for modern cloud apps.</p>
+                    <ul class="small">
+                        <li>EKS / GKE clusters & Helm charts</li>
+                        <li>Horizontal Pod Autoscaling & PDBs</li>
+                        <li>Secrets management & OPA policies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Monitoring, Logging & Reliability -->
+            <div class="col-md-6 col-xl-3">
+                <div class="cardx service p-4 h-100">
+                    <div class="icon-pill mb-3"><i class="bi bi-graph-up"></i></div>
+                    <h5>Monitoring, Logging & Reliability</h5>
+                    <p class="text-muted">Proactive observability & alerts with Prometheus, Grafana, ELK Stack to ensure uptime, performance & quick incident response.</p>
+                    <ul class="small">
+                        <li>Prometheus, Grafana & CloudWatch</li>
+                        <li>ELK Stack / Centralized Logging</li>
+                        <li>SLIs, SLOs & runbooks for reliability</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Serverless & Automation -->
+            <div class="col-md-6 col-xl-3">
+                <div class="cardx service p-4 h-100">
+                    <div class="icon-pill mb-3"><i class="bi bi-lightning-charge-fill"></i></div>
+                    <h5>Serverless & Automation</h5>
+                    <p class="text-muted">AWS Lambda, EventBridge, and other serverless patterns to automate workflows, reduce costs, and scale on demand.</p>
+                    <ul class="small">
+                        <li>Lambda, Step Functions, EventBridge</li>
+                        <li>Serverless CI/CD & Infrastructure as Code</li>
+                        <li>Automated triggers & cloud-native workflows</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Cost Optimization & FinOps -->
+            <div class="col-md-6 col-xl-3">
+                <div class="cardx service p-4 h-100">
+                    <div class="icon-pill mb-3"><i class="bi bi-currency-dollar"></i></div>
+                    <h5>Cost Optimization & FinOps</h5>
+                    <p class="text-muted">Analyze usage, reduce waste, implement auto-scaling & reserved instances to maximize ROI while maintaining performance.</p>
+                    <ul class="small">
+                        <li>Right-sizing & cost dashboards</li>
+                        <li>Budgets, alerts & recommendations</li>
+                        <li>FinOps best practices for cloud spend</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Managed DevOps & Support -->
+            <div class="col-md-6 col-xl-3">
+                <div class="cardx service p-4 h-100">
+                    <div class="icon-pill mb-3"><i class="bi bi-headset"></i></div>
+                    <h5>Managed DevOps & Support</h5>
+                    <p class="text-muted">Ongoing maintenance, monitoring, and priority support to ensure your infrastructure and apps stay secure and performant.</p>
+                    <ul class="small">
+                        <li>24/7 monitoring & alerting</li>
+                        <li>Incident management & troubleshooting</li>
+                        <li>Monthly performance & reliability reports</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Infrastructure as Code & Automation (New) -->
+            <div class="col-md-6 col-xl-3">
+                <div class="cardx service p-4 h-100">
+                    <div class="icon-pill mb-3"><i class="bi bi-terminal-fill"></i></div>
+                    <h5>Infrastructure as Code & Automation</h5>
+                    <p class="text-muted">Provision, configure, and maintain cloud infrastructure using Terraform, Ansible & CloudFormation for fully automated, repeatable environments.</p>
+                    <ul class="small">
+                        <li>Terraform modules & reusable templates</li>
+                        <li>Ansible playbooks for config management</li>
+                        <li>CloudFormation stacks & automation scripts</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    .service {
+        background: #fff;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+    .service:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+    .icon-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        background: #e0f0ff;
+        color: #007bff;
+        border-radius: 50%;
+        font-size: 1.25rem;
+        transition: all 0.3s ease;
+    }
+    .service:hover .icon-pill {
+        background: #007bff;
+        color: #fff;
+        transform: scale(1.1);
+    }
+</style>
+
+<!-- DEVOPS IMPACT / WHY CHOOSE ME -->
+<section id="impact" class="section">
+    <div class="container-fluid container-edge px-3">
+        <div class="text-center mb-5">
+            <h2 class="mb-3">Why Businesses Choose My DevOps Expertise</h2>
+            <p class="text-muted">Accelerate delivery, reduce costs, and secure your cloud infrastructure with proven DevOps practices.</p>
+        </div>
+        <div class="row g-4 text-center">
+            <div class="col-md-6 col-xl-3">
+                <div class="cardx impact p-4 h-100">
+                    <div class="icon-pill mb-3"><i class="bi bi-speedometer2"></i></div>
+                    <h5>Faster Deployments</h5>
+                    <p class="text-muted small">Streamline CI/CD pipelines to ship features & fixes faster without compromising quality.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
+                <div class="cardx impact p-4 h-100">
+                    <div class="icon-pill mb-3"><i class="bi bi-shield-lock"></i></div>
+                    <h5>Secure & Compliant</h5>
+                    <p class="text-muted small">Implement best-practice security, auditing, and compliance standards for peace of mind.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
+                <div class="cardx impact p-4 h-100">
+                    <div class="icon-pill mb-3"><i class="bi bi-graph-up"></i></div>
+                    <h5>Reliable & Scalable</h5>
+                    <p class="text-muted small">Design cloud-native architectures that scale with your business and stay resilient.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
+                <div class="cardx impact p-4 h-100">
+                    <div class="icon-pill mb-3"><i class="bi bi-currency-dollar"></i></div>
+                    <h5>Cost-Optimized</h5>
+                    <p class="text-muted small">Maximize ROI with right-sizing, reserved instances, and FinOps best practices.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .impact {
+        background: #f9f9f9;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: default;
+    }
+    .impact:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+    }
+    .icon-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        background: #e0f0ff;
+        color: #007bff;
+        border-radius: 50%;
+        font-size: 1.25rem;
+        transition: all 0.3s ease;
+    }
+    .impact:hover .icon-pill {
+        background: #007bff;
+        color: #fff;
+        transform: scale(1.1);
+    }
+</style>
+
+
+<!-- PROJECTS / CASE STUDIES -->
+<!-- PROJECT SLIDER PREMIUM -->
+<section id="projects" class="section bg-white py-5">
+    <div class="container">
+        <h2 class="mb-2 text-center fw-bold">Featured DevOps & Cloud Projects</h2>
+        <p class="text-center text-muted mb-5">Real-world solutions demonstrating automation, scalability, security, and cloud cost optimization.</p>
+
+
+        <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+
+                <!-- Project Template -->
+                <div class="carousel-item active">
+                    <div class="row align-items-center project-card">
+                        <div class="col-md-6">
+                            <img src="assets/png1.png" class="img-fluid rounded-3 shadow" alt="Project 1">
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="fw-bold mb-3">SSL with Certbot</h4>
+                            <p class="text-muted">Automated SSL certificate renewal with Certbot. Zero downtime HTTPS deployment with Nginx for enhanced security.</p>
+                            <div class="tech-tags">
+                                <span>Nginx</span><span>Certbot</span><span>Linux</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="row align-items-center project-card">
+                        <div class="col-md-6">
+                            <img src="assets/png2.png" class="img-fluid rounded-3 shadow" alt="Project 2">
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="fw-bold mb-3">CI/CD Pipeline</h4>
+                            <p class="text-muted">End-to-end CI/CD pipeline with GitHub Actions & ECS. Deployment speed improved by 80% with rollback safety.</p>
+                            <div class="tech-tags">
+                                <span>GitHub Actions</span><span>ECS</span><span>Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="row align-items-center project-card">
+                        <div class="col-md-6">
+                            <img src="assets/png3.png" class="img-fluid rounded-3 shadow" alt="Project 3">
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="fw-bold mb-3">Terraform Automation</h4>
+                            <p class="text-muted">Infrastructure automated using Terraform modules. Reduced provisioning time from hours to minutes.</p>
+                            <div class="tech-tags">
+                                <span>Terraform</span><span>AWS</span><span>IaC</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="row align-items-center project-card">
+                        <div class="col-md-6">
+                            <img src="assets/png4.png" class="img-fluid rounded-3 shadow" alt="Project 4">
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="fw-bold mb-3">Monitoring Stack</h4>
+                            <p class="text-muted">Prometheus + Grafana integrated for metrics and alerts. Improved uptime with proactive issue detection.</p>
+                            <div class="tech-tags">
+                                <span>Prometheus</span><span>Grafana</span><span>AlertManager</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="row align-items-center project-card">
+                        <div class="col-md-6">
+                            <img src="assets/png5.png" class="img-fluid rounded-3 shadow" alt="Project 5">
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="fw-bold mb-3">Cost Optimization</h4>
+                            <p class="text-muted">Reduced AWS bills by 35% through rightsizing, reserved instances, and cost analysis dashboards.</p>
+                            <div class="tech-tags">
+                                <span>AWS</span><span>Cost Explorer</span><span>Savings Plans</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon custom-arrow" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon custom-arrow" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<style>
+    .project-card {
+      border: 2px solid #000;
+      border-radius: 15px;
+      padding: 25px;
+      margin: 20px 0;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease-in-out;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .tech-tags span {
+      background: #007bff;
+      color: #fff;
+      font-size: 0.85rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-right: 8px;
+      margin-top: 8px;
+      display: inline-block;
+      transition: 0.3s;
+    }
+    .tech-tags span:hover {
+      background: #0056b3;
+    }
+
+    .custom-arrow {
+      background-color: #007bff;
+      border-radius: 50%;
+      padding: 15px;
+      transition: 0.3s;
+    }
+    .custom-arrow:hover {
+      background-color: #0056b3;
+    }
+</style>
+
+
+<<!-- PROCESS -->
+<section id="process" class="section">
+    <style>
+        /* Steps Animation */
+        .step {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        .step:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+
+        /* Tech Chips Animation */
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background-color: #f0f0f0;
+            font-size: 0.9rem;
+            transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+        }
+        .chip i {
+            margin-right: 6px;
+        }
+        .chip:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: #007bff;
+            color: #fff;
+        }
+    </style>
+
+    <div class="container-fluid container-edge px-3">
+        <h2 class="mb-4">How we’ll work</h2>
+        <div class="row g-3">
+            <div class="col-lg-6">
+                <div class="cardx p-4 h-100">
+                    <div class="step mb-3" data-n="1">
+                        <h6>Discovery & Audit (Free)</h6>
+                        <p class="text-muted small mb-0">Quick call + current state review: infra, CI/CD, security & costs.</p>
+                    </div>
+                    <div class="step mb-3" data-n="2">
+                        <h6>Plan & Milestones</h6>
+                        <p class="text-muted small mb-0">Roadmap with risks, estimates & success metrics (SLOs).</p>
+                    </div>
+                    <div class="step mb-3" data-n="3">
+                        <h6>Build & Automate</h6>
+                        <p class="text-muted small mb-0">Terraform modules, pipelines, Kubernetes, monitoring.</p>
+                    </div>
+                    <div class="step" data-n="4">
+                        <h6>Handover & Support</h6>
+                        <p class="text-muted small mb-0">Docs, training, dashboards; option for ongoing DevOps.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="cardx p-4 h-100">
+                    <h6 class="mb-3">Tech I use daily</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                        <!-- Cloud & DevOps Services -->
+                        <span class="chip"><i class="fa-brands fa-aws"></i> AWS</span>
+                        <span class="chip"><i class="bi bi-server"></i> ECS</span>
+                        <span class="chip"><i class="bi bi-database"></i> RDS</span>
+                        <span class="chip"><i class="bi bi-envelope"></i> SQS</span>
+                        <span class="chip"><i class="bi bi-gear-wide-connected"></i> CloudWatch</span>
+                        <span class="chip"><i class="bi bi-cloud-arrow-up"></i> API Gateway</span>
+                        <span class="chip"><i class="bi bi-globe"></i> Route 53</span>
+                        <span class="chip"><i class="bi bi-box-seam"></i> ECR</span>
+                        <span class="chip"><i class="bi bi-shield-fill-check"></i> Secrets Manager</span>
+
+                        <!-- Container & Orchestration -->
+                        <span class="chip"><i class="fa-brands fa-docker"></i> Docker</span>
+                        <span class="chip"><i class="bi bi-diagram-3"></i> Kubernetes / EKS</span>
+                        <span class="chip"><i class="bi bi-boxes"></i> Helm</span>
+
+                        <!-- IaC & CI/CD -->
+                        <span class="chip"><i class="bi bi-terminal"></i> Terraform</span>
+                        <span class="chip"><i class="bi bi-git"></i> GitHub Actions</span>
+                        <span class="chip"><i class="bi bi-git"></i> GitLab CI/CD</span>
+                        <span class="chip"><i class="bi bi-circle-fill"></i> Jenkins</span>
+                        <span class="chip"><i class="bi bi-box-arrow-in-down-left"></i> ArgoCD</span>
+                        <span class="chip"><i class="bi bi-cloud-download"></i> CloudFormation</span>
+
+                        <!-- Monitoring & Logging -->
+                        <span class="chip"><i class="bi bi-graph-up"></i> Prometheus</span>
+                        <span class="chip"><i class="bi bi-speedometer2"></i> Grafana</span>
+                        <span class="chip"><i class="bi bi-file-text"></i> ELK Stack</span>
+
+                        <!-- Security & Serverless -->
+                        <span class="chip"><i class="bi bi-shield-lock"></i> Security Hub</span>
+                        <span class="chip"><i class="bi bi-cloud-lightning"></i> Lambda</span>
+                        <span class="chip"><i class="bi bi-key-fill"></i> IAM / Policies</span>
+
+                        <!-- Other Tools -->
+                        <span class="chip"><i class="bi bi-gear"></i> Ansible</span>
+                        <span class="chip"><i class="bi bi-hdd-stack"></i> S3 / Storage</span>
+                    </div>
+                    <div class="tiny mt-3">Need something specific? <a href="#contact">Tell me your stack</a>.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- FAQ -->
+<section id="faq" class="section">
+    <div class="container-fluid container-edge px-3">
+        <div class="row g-3">
+            <div class="col-lg-6">
+                <h2 class="mb-4">FAQs — DevOps & Cloud</h2>
+                <div class="accordion faq" id="faqAcc">
+                    <!-- Existing Questions -->
+                    <div class="accordion-item bg-transparent border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#f1">
+                                Which cloud providers and platforms do you support?
+                            </button>
+                        </h2>
+                        <div id="f1" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+                            <div class="accordion-body text-muted">
+                                I work across AWS, Google Cloud (GCP) and Azure — including EKS/GKE/AKS, managed databases, and hybrid/on-prem setups. I also handle migrations, multi-cloud strategies, and container orchestration using Kubernetes.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-transparent border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#f2">
+                                How do you ensure zero-downtime and safe rollbacks?
+                            </button>
+                        </h2>
+                        <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+                            <div class="accordion-body text-muted">
+                                We design pipelines with canary/blue-green strategies, health checks, automated smoke tests, and automated rollbacks. Deployments are gated by tests and monitoring alerts so that any regression triggers a safe rollback.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-transparent border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#f3">
+                                Do you provide monitoring, alerting, and on-call support?
+                            </button>
+                        </h2>
+                        <div id="f3" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+                            <div class="accordion-body text-muted">
+                                Yes — I implement Prometheus/Grafana (or cloud-native monitoring), log aggregation, alerting (PagerDuty/opsgenie integrations), SLOs/SLIs, runbooks, and on-call rotations. Monthly retainers include agreed SLAs and incident response.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- New Questions -->
+                    <div class="accordion-item bg-transparent border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#f4">
+                                How do you handle infrastructure as code and configuration management?
+                            </button>
+                        </h2>
+                        <div id="f4" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+                            <div class="accordion-body text-muted">
+                                I use Terraform and Ansible to define infrastructure as code. Terraform manages cloud resources declaratively, while Ansible handles configuration, software installation, and environment setup. This ensures reproducibility, version control, and automated provisioning across environments.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-transparent border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#f5">
+                                How do you optimize cloud costs and ensure efficiency?
+                            </button>
+                        </h2>
+                        <div id="f5" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+                            <div class="accordion-body text-muted">
+                                I perform right-sizing, implement auto-scaling, use spot/preemptible instances where applicable, and monitor cost dashboards. I also analyze unused resources and optimize storage, networking, and compute usage to keep cloud bills predictable and minimal without sacrificing performance.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-transparent border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#f6">
+                                Can you integrate CI/CD pipelines with existing applications?
+                            </button>
+                        </h2>
+                        <div id="f6" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+                            <div class="accordion-body text-muted">
+                                Absolutely — I integrate CI/CD pipelines using Jenkins, GitHub Actions, or GitLab CI. This includes automated builds, tests, security scans, and deployments. Existing applications are analyzed, containerized if needed, and smoothly connected to pipelines without downtime.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTACT -->
+            <div class="col-lg-6" id="contact">
+                <div class="cardx p-4">
+                    <h2 class="mb-3">Tell me about your project</h2>
+                    <form action="https://formspree.io/f/yourFormID" method="POST">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Name</label>
+                                <input name="name" class="form-control" placeholder="Your name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Email</label>
+                                <input type="email" name="email" class="form-control" placeholder="you@company.com" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Company</label>
+                                <input name="company" class="form-control" placeholder="Company / Startup">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Budget</label>
+                                <select name="budget" class="form-select">
+                                    <option value="Undisclosed">Undisclosed</option>
+                                    <option>₹25k–₹50k</option>
+                                    <option>₹50k–₹1L</option>
+                                    <option>₹1L–₹2L</option>
+                                    <option>₹2L+</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">What do you need?</label>
+                                <textarea name="message" class="form-control" rows="4" placeholder="Explain goals, timelines, tech stack…" required></textarea>
+                            </div><div class="col-12 d-flex gap-2 flex-wrap">
+                            <button class="btn btn-gradient"><i class="bi bi-send me-2"></i>Send</button>
+                            <a class="btn btn-gradient" href="mailto:yrahul.it@gmail.com"><i class="bi bi-envelope me-2"></i>Email Direct</a>
+                            <a class="btn btn-gradient" href="tel:+919783959837"><i class="bi bi-telephone me-2"></i>Call</a>
+                            <a class="btn btn-gradient" href="https://wa.me/919783959837?text=Hi%20Rahul,%20I%20need%20DevOps%20help" target="_blank">
+                                <i class="bi bi-whatsapp me-2"></i>WhatsApp
+                            </a>
+                        </div>
+
+                            <!-- CSS -->
+                            <style>
+                                .btn-gradient {
+                                    background: linear-gradient(270deg, #00bfff, #1e90ff, #00bfff);
+                                    background-size: 600% 600%;
+                                    color: #fff;
+                                    border: none;
+                                    border-radius: 50px;
+                                    padding: 0.5rem 1.5rem;
+                                    transition: all 0.3s ease;
+                                    white-space: nowrap;
+                                    display: inline-flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    font-weight: 500;
+                                    animation: gradientMove 6s ease infinite;
+                                }
+                                .btn-gradient:hover {
+                                    transform: translateY(-3px);
+                                    box-shadow: 0 6px 20px rgba(0,191,255,0.5);
+                                }
+
+                                @keyframes gradientMove {
+                                    0% {background-position: 0% 50%;}
+                                    50% {background-position: 100% 50%;}
+                                    100% {background-position: 0% 50%;}
+                                }
+                            </style>
+
+                            <!-- Hidden fields -->
+                            <input type="hidden" name="source" value="portfolio-site" />
+                        </div>
+                    </form>
+                    <div class="tiny mt-3"><i class="bi bi-lock-fill me-1"></i> Your info is confidential. I never share contact details.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Logos -->
+<footer class="footer section pt-5">
+    <div class="container-fluid container-edge px-3">
+        <div class="row gy-3 align-items-center">
+            <div class="col-md-6">
+                <h4 class="text-gradient mb-2">Rahul Yadav</h4>
+                <div class="text-muted">Certified AWS & DevOps Engineer</div>
+                <div class="tiny mt-2">© <span id="year"></span> Rahul Yadav. All rights reserved.</div>
+            </div>
+            <div class="col-md-6 d-flex gap-3 justify-content-md-end flex-wrap">
+                <a class="icon-btn" target="_blank" href="https://github.com/yrahul05">
+                    <i class="bi bi-github"></i><span class="btn-text">GitHub</span>
+                </a>
+                <a class="icon-btn" target="_blank" href="https://www.linkedin.com/in/rahulyadavdevops/">
+                    <i class="bi bi-linkedin"></i><span class="btn-text">LinkedIn</span>
+                </a>
+                <a class="icon-btn" target="_blank" href="https://www.upwork.com/freelancers/~0183ad8a41e8284283">
+                    <i class="bi bi-briefcase"></i><span class="btn-text">Upwork</span>
+                </a>
+                <a class="icon-btn" target="_blank" href="https://medium.com/@rahulyadav-devops">
+                    <i class="bi bi-journal-text"></i><span class="btn-text">Medium</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* Base button style */
+    .icon-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 22px;
+      border-radius: 50px;
+      background-color: #e0e0e0; /* light grey default */
+      color: #000000; /* text black */
+      font-weight: 500;
+      font-size: 1rem;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    /* Icon default: dark blue (always) */
+    .icon-btn i {
+      font-size: 1.3rem;
+      color: #0b3d91; /* darker blue default */
+      transition: all 0.3s ease;
+    }
+
+    /* Text default black */
+    .icon-btn .btn-text {
+      color: #000000;
+      opacity: 1;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+    }
+
+    /* Hover effect */
+    .icon-btn:hover {
+      background-color: #0d6efd; /* blue background on hover */
+      transform: scale(1.08);
+      box-shadow: 0 6px 15px rgba(13,110,253,0.3);
+    }
+
+    .icon-btn:hover .btn-text {
+      color: #ffffff; /* text white on hover */
+    }
+
+    .icon-btn:hover i {
+      color: #084298; /* icons dark blue on hover */
+    }
+
+    /* Click effect */
+    .icon-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* Ripple effect */
+    .ripple {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple-effect 0.6s linear;
+      pointer-events: none;
+    }
+
+    @keyframes ripple-effect {
+      to { transform: scale(10); opacity: 0; }
+    }
+</style>
+
+<script>
+    // Ripple effect
+    document.querySelectorAll('.icon-btn').forEach(button => {
+      button.addEventListener('click', e => {
+        const circle = document.createElement('span');
+        circle.classList.add('ripple');
+        const rect = button.getBoundingClientRect();
+        circle.style.left = `${e.clientX - rect.left}px`;
+        circle.style.top = `${e.clientY - rect.top}px`;
+        button.appendChild(circle);
+        setTimeout(() => circle.remove(), 600);
+      });
+    });
+
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+
+<!-- FLOATING CTAs -->
+<div class="floating-cta">
+    <a class="btn wa-btn" href="https://wa.me/919783959837?text=Hi%20Rahul,%20I%20need%20DevOps%20help" target="_blank">
+        <i class="bi bi-whatsapp me-1"></i> WhatsApp
+    </a>
+    <a class="btn btn-gradient" href="#contact"><i class="bi bi-lightning-charge me-1"></i> Get Quote</a>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // active nav highlight on scroll
+    const links=[...document.querySelectorAll('.nav-link')];
+    const ids=links.map(l=>document.querySelector(l.getAttribute('href'))).filter(Boolean);
+    const spy=()=>{
+      let idx=0,fromTop=scrollY+100;
+      ids.forEach((sec,i)=>{if(sec.offsetTop<=fromTop) idx=i;});
+      links.forEach(l=>l.classList.remove('active'));
+      if(links[idx]) links[idx].classList.add('active');
+    };
+    document.addEventListener('scroll',spy); spy();
+
+    // current year
+    document.getElementById('year').textContent=new Date().getFullYear();
+
+    // smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const id=a.getAttribute('href');
+        if(id.length>1){
+          e.preventDefault();
+          document.querySelector(id)?.scrollIntoView({behavior:'smooth',block:'start'});
+          history.pushState(null,null,id);
+        }
+      });
+    });
+</script>
+
+<!-- JSON-LD (Optional, improves SEO) -->
+<script type="application/ld+json">
+    {
+        "@context":"https://schema.org",
+        "@type":"Person",
+        "name":"Rahul Yadav",
+        "jobTitle":"AWS & DevOps Engineer",
+        "url":"https://your-domain.com",
+        "email":"mailto:yrahul.it@gmail.com",
+        "telephone":"+919783959837",
+        "sameAs":[
+            "https://github.com/yrahul05",
+            "https://www.linkedin.com/in/rahulyadavdevops/",
+            "https://www.upwork.com/freelancers/~0183ad8a41e8284283",
+            "https://medium.com/@rahulyadav-devops"
+        ],
+        "knowsAbout":["AWS","DevOps","Kubernetes","CI/CD","Security","Terraform","Monitoring"]
+    }
+</script>
+</body>
+</html>
